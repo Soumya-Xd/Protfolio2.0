@@ -1,20 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { RobotCanvas } from './canvas';
-import Typed from 'typed.js';  // Import Typed.js
+import Typed from 'typed.js'; // Import Typed.js
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Update state based on window width
+    };
+
+    // Set initial value on component mount
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     // Initialize Typed.js once the component mounts
     const options = {
       strings: ['Web Developer', 'Python Developer', 'ML Developer', 'Video Editor'],
-      typeSpeed: 50,        // Speed of typing
-      backSpeed: 25,        // Speed of erasing
-      backDelay: 1000,      // Delay before erasing starts
-      startDelay: 500,      // Delay before typing starts
-      loop: true,           // Loop the animation
-      showCursor: false,    // Hide cursor
+      typeSpeed: 50, // Speed of typing
+      backSpeed: 25, // Speed of erasing
+      backDelay: 1000, // Delay before erasing starts
+      startDelay: 500, // Delay before typing starts
+      loop: true, // Loop the animation
+      showCursor: false, // Hide cursor
     };
 
     const typed = new Typed('#typed-element', options);
@@ -46,22 +65,25 @@ const Hero = () => {
         </div>
       </div>
 
-      <RobotCanvas />
-
+      {/* Conditionally render RobotCanvas */}
+      {!isMobile && <RobotCanvas />}
+      
       <div className="absolute xs:bottom-0 bottom-28 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-3 mt-1">
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-            />
+            {!isMobile && (
+              <motion.div
+                animate={{
+                  y: [0, 24, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+                className="w-3 h-3 rounded-full bg-secondary mb-1"
+              />
+            )}
           </div>
         </a>
       </div>

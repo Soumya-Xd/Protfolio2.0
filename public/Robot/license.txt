@@ -1,0 +1,11 @@
+Model Information:
+* title:	Titan Duchess V2
+* source:	https://sketchfab.com/3d-models/titan-duchess-v2-0d28b7e4568341bca576ee22d45d3d2c
+* author:	The New Astro Mothership (https://sketchfab.com/jared2024_)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Titan Duchess V2" (https://sketchfab.com/3d-models/titan-duchess-v2-0d28b7e4568341bca576ee22d45d3d2c) by The New Astro Mothership (https://sketchfab.com/jared2024_) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -7,7 +7,7 @@ import { EarthCanvas } from "./canvas";
 import { SoumyaCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-
+import { HanumanCanvas } from "./canvas";
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -122,7 +122,7 @@ const Contact = () => {
             >
               {loading ? "Sending..." : "Send"}
             </button>
-           <a
+            <a
               href="https://drive.google.com/file/d/1x0DDHtKY1I-saZaNtQeFtjafMP_vKw-N/view?usp=drive_link" // Replace with your actual resume file path
               target="_blank" 
               download="Soumya_Resume.pdf" // The name for the downloaded file
@@ -138,7 +138,7 @@ const Contact = () => {
         variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
-        <SoumyaCanvas />
+        <EarthCanvas />
       </motion.div>
     </div>
   );

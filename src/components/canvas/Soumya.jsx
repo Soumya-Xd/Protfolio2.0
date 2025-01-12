@@ -1,7 +1,6 @@
 import React, { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Float, OrbitControls, Preload } from "@react-three/drei";
-import { gsap } from "gsap";
 import CanvasLoader from "../Loader";
 
 const SoumyaCharacter = ({ isMobile }) => {
@@ -16,22 +15,30 @@ const SoumyaCharacter = ({ isMobile }) => {
     >
       <mesh ref={characterRef}>
         {/* Lighting adjustments */}
-        <hemisphereLight intensity={0.9} groundColor="black" />
+        <hemisphereLight intensity={1.2} groundColor="black" />
         <spotLight
-          position={[-15, 40, 15]}
-          angle={0.5} // Wider spotlight angle
+          position={[-10, 30, 10]} // Positioned to illuminate the model effectively
+          angle={0.6} // Wider spotlight angle
           penumbra={1}
-          intensity={4} // Increased spotlight intensity for brighter light
+          intensity={5} // Increased spotlight intensity for more brightness
           castShadow
-          shadow-mapSize={1024}
+          shadow-mapSize={2048} // Higher shadow resolution
         />
-        <pointLight intensity={1.5} position={[10, 10, 10]} /> {/* Add another point light for better illumination */}
+        <pointLight intensity={2} position={[10, 15, 10]} />
         <primitive
           object={character.scene}
           scale={isMobile ? 2.5 : 3} // Larger model for both mobile and desktop
           position={isMobile ? [0, -1, 0] : [0, -1, 0]} // Moved upwards: y-value decreased for both mobile and desktop
           rotation={[-0.01, 0, 0]} // Kept rotation fixed
-        />
+        >
+          {/* Adding a metallic material */}
+          <meshStandardMaterial
+            attach="material"
+            metalness={0.8} // High metalness for a metallic appearance
+            roughness={0.2} // Low roughness for a shiny surface
+            color="#CCCCCC" // Light gray metallic color
+          />
+        </primitive>
       </mesh>
     </Float>
   );

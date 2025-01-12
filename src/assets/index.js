@@ -32,7 +32,7 @@ import wbhs from "./company/wbhs.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
-import pr1 from "./proj1.png";
+import pr1 from "./Proj1.png";
 import pr2 from "./proj2.png";
 import pr3 from "./proj3.png";
 

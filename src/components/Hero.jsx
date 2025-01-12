@@ -2,19 +2,19 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { RobotCanvas } from './canvas';
-import Typed from 'typed.js';  // Import Typed.js
+import Typed from 'typed.js';
 
 const Hero = () => {
   useEffect(() => {
     // Initialize Typed.js once the component mounts
     const options = {
       strings: ['Web Developer', 'Python Developer', 'ML Developer', 'Video Editor'],
-      typeSpeed: 50,        // Speed of typing
-      backSpeed: 25,        // Speed of erasing
-      backDelay: 1000,      // Delay before erasing starts
-      startDelay: 500,      // Delay before typing starts
-      loop: true,           // Loop the animation
-      showCursor: false,    // Hide cursor
+      typeSpeed: 50, // Speed of typing
+      backSpeed: 25, // Speed of erasing
+      backDelay: 1000, // Delay before erasing starts
+      startDelay: 500, // Delay before typing starts
+      loop: true, // Loop the animation
+      showCursor: false, // Hide cursor
     };
 
     const typed = new Typed('#typed-element', options);
@@ -46,6 +46,7 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Always render RobotCanvas */}
       <RobotCanvas />
 
       <div className="absolute xs:bottom-0 bottom-28 w-full flex justify-center items-center">
@@ -58,7 +59,7 @@ const Hero = () => {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "loop",
+                repeatType: 'loop',
               }}
               className="w-3 h-3 rounded-full bg-secondary mb-1"
             />

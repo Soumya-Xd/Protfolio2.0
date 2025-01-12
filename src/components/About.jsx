@@ -8,12 +8,11 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SoumyaCanvas } from "./canvas";
 
-
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className="xs:w-[250px] w-full">
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
       <div
         options={{
@@ -21,14 +20,14 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
       >
         <img
           src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
+          alt="web-development"
+          className="w-16 h-16 object-contain"
         />
-        <h3 className='text-white text-[20px] font-bold text-center'>
+        <h3 className="text-white text-[20px] font-bold text-center">
           {title}
         </h3>
       </div>
@@ -39,17 +38,29 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
-      <motion.div variants={textVariant()} className="flex flex-col items-center">
+      <motion.div
+        variants={textVariant()}
+        className="flex flex-col items-center text-center"
+      >
         {/* Add SoumyaCanvas at the top */}
-   
+        <div className="w-full flex justify-center items-center mb-8">
+          <div className="w-full h-[200px] xs:h-[300px] sm:h-[400px]">
+            <SoumyaCanvas />
+          </div>
+        </div>
 
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p className={`${styles.sectionSubText} text-sm sm:text-base mb-4`}>
+  Introduction
+</p>
+<h2 className={`${styles.sectionHeadText} text-2xl sm:text-4xl`}>
+  Overview.
+</h2>
+
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className="mt-4 text-secondary text-[15px] sm:text-[17px] max-w-3xl leading-[24px] sm:leading-[30px] mx-auto px-4 text-center"
       >
         I'm a skilled software developer with experience in TypeScript and
         JavaScript, and expertise in frameworks like React, Node.js, and
@@ -58,7 +69,8 @@ const About = () => {
         real-world problems. Let's work together to bring your ideas to life!
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      {/* Center service cards */}
+      <div className="mt-10 sm:mt-20 flex flex-wrap gap-6 sm:gap-10 justify-center items-center">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

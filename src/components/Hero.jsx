@@ -1,32 +1,44 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { RobotCanvas } from './canvas';
 import Typed from 'typed.js';
-import { useMediaQuery } from 'react-responsive';
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    // Initialize Typed.js once the component mounts
+    // Check screen size and update `isMobile` state
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Set initial state and add event listener
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // Initialize Typed.js
     const options = {
       strings: ['Web Developer', 'Python Developer', 'ML Developer', 'Video Editor'],
-      typeSpeed: 50, // Speed of typing
-      backSpeed: 25, // Speed of erasing
-      backDelay: 1000, // Delay before erasing starts
-      startDelay: 500, // Delay before typing starts
-      loop: true, // Loop the animation
-      showCursor: false, // Hide cursor
+      typeSpeed: 50,
+      backSpeed: 25,
+      backDelay: 1000,
+      startDelay: 500,
+      loop: true,
+      showCursor: false,
     };
 
     const typed = new Typed('#typed-element', options);
 
     return () => {
-      typed.destroy(); // Clean up when the component unmounts
+      typed.destroy();
     };
   }, []);
-
-  // Detect if the screen width is less than 768px (mobile devices)
-  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
     <section className="relative w-full h-screen mx-auto">
@@ -55,9 +67,7 @@ const Hero = () => {
 
       <div className="absolute xs:bottom-0 bottom-28 w-full flex justify-center items-center">
         <a href="#about">
-          <div
-            className="w-[35px] h-[70px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2 mt-10"
-          >
+          <div className="w-[35px] h-[70px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2 mt-10">
             <motion.div
               animate={{
                 y: [0, 24, 0], // Bounce effect
@@ -65,7 +75,7 @@ const Hero = () => {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "loop",
+                repeatType: 'loop',
               }}
               className="w-3 h-3 rounded-full bg-secondary mb-1"
             />

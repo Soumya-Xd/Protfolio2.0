@@ -122,8 +122,9 @@ const Contact = () => {
             >
               {loading ? "Sending..." : "Send"}
             </button>
-            <a
-              href="src\assets\My_Resume.pdf" // Replace with your actual resume file path
+           <a
+              href="https://drive.google.com/file/d/1x0DDHtKY1I-saZaNtQeFtjafMP_vKw-N/view?usp=drive_link" // Replace with your actual resume file path
+              target="_blank" 
               download="Soumya_Resume.pdf" // The name for the downloaded file
               className='bg-primary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-secondary'
             >

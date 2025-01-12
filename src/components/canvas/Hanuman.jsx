@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Float, OrbitControls, Preload, Environment, useAnimations } from "@react-three/drei";
 import CanvasLoader from "../Loader";
-import { Bloom } from "@react-three/postprocessing";
 
 const SoumyaCharacter = ({ isMobile }) => {
   const character = useGLTF("./Hanuman/scene.gltf");
@@ -92,11 +91,6 @@ const SoumyaCanvas = () => {
         />
         <SoumyaCharacter isMobile={isMobile} />
         <Environment preset="sunset" /> {/* Adding environment texture for realistic lighting */}
-        <Bloom
-          intensity={0.6} // Increased bloom intensity for a glowing effect
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0.9}
-        /> {/* Bloom effect for light and glow */}
       </Suspense>
 
       <Preload all />

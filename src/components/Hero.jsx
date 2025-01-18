@@ -8,21 +8,17 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check screen size and update `isMobile` state
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Set initial state and add event listener
     handleResize();
     window.addEventListener('resize', handleResize);
 
-    // Cleanup event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    // Initialize Typed.js
     const options = {
       strings: ['Web Developer', 'Python Developer', 'ML Developer', 'Video Editor'],
       typeSpeed: 50,
@@ -41,7 +37,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative w-full h-screen mx-auto flex flex-col justify-center items-center">
       <div className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-col md:flex-row items-start md:gap-10 gap-5`}>
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#B4B8B1]" />
@@ -60,17 +56,27 @@ const Hero = () => {
             and I'm a passionate <span id="typed-element"></span>
           </p>
         </div>
+        
       </div>
 
-      {/* Conditionally render RobotCanvas based on screen size */}
       {!isMobile && <RobotCanvas />}
+
+      {isMobile && (
+        <div className="absolute inset-0 flex justify-center items-center">
+          <a href="https://drive.google.com/file/d/1x0DDHtKY1I-saZaNtQeFtjafMP_vKw-N/view?usp=drive_link" // Replace with your actual resume file path
+              target="_blank" 
+              download="Soumya_Resume.pdf" className="px-6 py-3 text-white font-bold text-lg bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 animate-pulse">
+            HIRE ME
+          </a>
+        </div>
+      )}
 
       <div className="absolute xs:bottom-0 bottom-28 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[70px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2 mt-10">
             <motion.div
               animate={{
-                y: [0, 24, 0], // Bounce effect
+                y: [0, 24, 0],
               }}
               transition={{
                 duration: 1.5,
